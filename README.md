@@ -1,7 +1,7 @@
 # 🐳 Docker Installation Scripts
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/docker/docker.github.io/master/images/docker-logo.png" alt="Docker Logo" width="200"/>
+  <img src="https://github.com/user-attachments/assets/b1d467f6-95ce-4dbf-928e-a3a64ffafe4e" alt="Docker Logo" width="200"/>
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![OS Support](https://img.shields.io/badge/OS-Linux%20%7C%20macOS%20%7C%20Windows-brightgreen.svg)](https://github.com/sioaeko/Docker-Installation-Scripts)
