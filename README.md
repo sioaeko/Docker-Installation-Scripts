@@ -4,8 +4,8 @@ This repository contains a collection of scripts for automating Docker and Docke
 
 ## Available Scripts
 
-1. `install-docker.sh` - Ubuntu installation script (Korean)
-2. `install-docker-en.sh` - Ubuntu installation script (English)
+1. `install-docker-kr.sh` - Ubuntu installation script (Korean)
+2. `install-docker.sh` - Ubuntu installation script (English)
 3. `install-docker-universal.sh` - Universal Linux installation script
 4. `install-docker-windows.ps1` - Windows installation script
 
