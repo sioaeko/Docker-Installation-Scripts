@@ -1,178 +1,181 @@
-# Docker Installation Scripts
+# 🐳 Docker Installation Scripts
 
-This repository contains a collection of scripts for automating Docker and Docker Compose installation across different operating systems. The scripts are designed to be user-friendly and include comprehensive error handling and system requirement checks.
+<div align="center">
+  <img src="https://raw.githubusercontent.com/docker/docker.github.io/master/images/docker-logo.png" alt="Docker Logo" width="200"/>
 
-## Available Scripts
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![OS Support](https://img.shields.io/badge/OS-Linux%20%7C%20macOS%20%7C%20Windows-brightgreen.svg)](https://github.com/sioaeko/Docker-Installation-Scripts)
+  [![Apple Silicon](https://img.shields.io/badge/Apple%20Silicon-M1%2FM2%20Support-orange.svg)](https://github.com/sioaeko/Docker-Installation-Scripts)
+</div>
 
-1. `install-docker-kr.sh` - Ubuntu installation script (Korean)
-2. `install-docker.sh` - Ubuntu installation script (English)
-3. `install-docker-universal.sh` - Universal Linux installation script
-4. `install-docker-windows.ps1` - Windows installation script
+## 📋 Overview
 
-## Features
+A comprehensive collection of scripts for automating Docker and Docker Compose installation across different operating systems. These scripts are designed to be user-friendly and include comprehensive error handling and system requirement checks.
 
-- Automatic OS detection and compatibility checking
-- Docker and Docker Compose installation
-- User permission configuration
-- Post-installation setup
-- Comprehensive error handling
-- Detailed progress feedback
-- Common Docker commands guide
+## ✨ Features
 
-## System Requirements
+- 🔄 Automatic OS detection and compatibility checking
+- 📦 Docker and Docker Compose installation
+- 👤 User permission configuration
+- ⚙️ Post-installation setup
+- 🚨 Comprehensive error handling
+- 📝 Detailed progress feedback
+- 📚 Common Docker commands guide
 
-### Linux (Ubuntu/Debian/CentOS/RHEL/Amazon Linux)
+## 💻 System Requirements
+
+### Linux Systems
 - Root or sudo privileges
 - Internet connection
 - bash shell
 - Minimum 4GB RAM recommended
 - 64-bit operating system
 
-### Windows
+### macOS Systems
+- macOS 11 (Big Sur) or later
+- 8GB RAM (16GB recommended)
+- 20GB available disk space
+- Admin user account
+- Rosetta 2 (M1/M2 Macs)
+
+### Windows Systems
 - Windows 10/11 Pro, Enterprise, or Education (64-bit)
 - Administrator privileges
-- Hardware virtualization support (Intel VT-x or AMD-V)
+- Hardware virtualization support
 - Minimum 4GB RAM (8GB recommended)
 - WSL 2 support
-- Internet connection
 
-## Installation Instructions
+## 🚀 Installation Instructions
 
 ### Ubuntu/Debian (Korean)
 ```bash
-# Download the script
-wget https://raw.githubusercontent.com/yourusername/docker-install/master/install-docker.sh
-
-# Make it executable
-chmod +x install-docker.sh
-
-# Run the script
-sudo ./install-docker.sh
+wget https://raw.githubusercontent.com/sioaeko/Docker-Installation-Scripts/main/install-docker-kr.sh
+chmod +x install-docker-kr.sh
+sudo ./install-docker-kr.sh
 ```
 
 ### Ubuntu/Debian (English)
 ```bash
-# Download the script
-wget https://raw.githubusercontent.com/yourusername/docker-install/master/install-docker-en.sh
-
-# Make it executable
-chmod +x install-docker-en.sh
-
-# Run the script
-sudo ./install-docker-en.sh
+wget https://raw.githubusercontent.com/sioaeko/Docker-Installation-Scripts/main/install-docker.sh
+chmod +x install-docker.sh
+sudo ./install-docker.sh
 ```
 
 ### Universal Linux Script
 ```bash
-# Download the script
-wget https://raw.githubusercontent.com/yourusername/docker-install/master/install-docker-universal.sh
-
-# Make it executable
+wget https://raw.githubusercontent.com/sioaeko/Docker-Installation-Scripts/main/install-docker-universal.sh
 chmod +x install-docker-universal.sh
-
-# Run the script
 sudo ./install-docker-universal.sh
 ```
 
+### macOS
+```bash
+curl -O https://raw.githubusercontent.com/sioaeko/Docker-Installation-Scripts/main/install-docker-mac.sh
+chmod +x install-docker-mac.sh
+./install-docker-mac.sh
+```
+
 ### Windows
-1. Open PowerShell as Administrator
-2. Enable script execution (if needed):
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
-```
-3. Run the script:
-```powershell
 .\install-docker-windows.ps1
 ```
 
-## Post-Installation Verification
+## ✅ Post-Installation Verification
 
-After installation, verify Docker is working correctly:
+Verify Docker is working correctly:
 
 ```bash
-# Linux
+# Check versions
 docker --version
 docker compose version
+
+# Run test container
 docker run hello-world
 
-# Check Docker service status
+# Check Docker service status (Linux)
 sudo systemctl status docker
 ```
 
-```powershell
-# Windows
-docker --version
-docker compose version
-docker run hello-world
+## 🛠️ Common Docker Commands
+
+### Container Management
+```bash
+docker ps         # List running containers
+docker ps -a      # List all containers
+docker start      # Start a container
+docker stop       # Stop a container
+docker rm         # Remove a container
 ```
 
-## Common Docker Commands
-
+### Image Management
 ```bash
-# Container Management
-docker ps                 # List running containers
-docker ps -a              # List all containers
-docker start <container>  # Start a container
-docker stop <container>   # Stop a container
-docker rm <container>     # Remove a container
-
-# Image Management
-docker images            # List downloaded images
-docker pull <image>      # Download an image
-docker rmi <image>       # Remove an image
-
-# Docker Compose
-docker compose up        # Start services
-docker compose down      # Stop services
+docker images    # List images
+docker pull      # Download an image
+docker rmi       # Remove an image
 ```
 
-## Troubleshooting
-
-### Linux
-1. If you encounter permission errors:
+### Docker Compose
 ```bash
+docker compose up    # Start services
+docker compose down  # Stop services
+```
+
+## 🔧 Troubleshooting
+
+### Linux Issues
+```bash
+# Fix permissions
 sudo usermod -aG docker $USER
 newgrp docker
-```
 
-2. If Docker service fails to start:
-```bash
+# Service issues
 sudo systemctl status docker
 sudo journalctl -xu docker
 ```
 
-### Windows
-1. Ensure Hyper-V is enabled
-2. Verify WSL 2 is properly installed
-3. Check virtualization is enabled in BIOS
-4. Run Docker Desktop as administrator
+### macOS Issues
+```bash
+# Reset Docker Desktop
+killall Docker && open -a Docker
 
-## Security Notes
+# Fix Homebrew permissions
+sudo chown -R $(whoami):admin /usr/local
+```
 
-- The scripts require root/administrator privileges
-- Scripts download from official Docker repositories only
-- User is added to docker group (Linux) or docker-users group (Windows)
+### Windows Issues
+- Ensure Hyper-V is enabled
+- Verify WSL 2 is properly installed
+- Check virtualization is enabled in BIOS
+- Run Docker Desktop as administrator
+
+## 🔒 Security Notes
+
+- Scripts require root/administrator privileges
+- Downloads from official Docker repositories only
+- User added to docker group (Linux) or docker-users group (Windows)
 - Default Docker configurations are security-focused
 
-## Contributing
+## 🤝 Contributing
 
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
-## License
+## 📄 License
 
-MIT License - feel free to use and modify for your needs.
+MIT License - See [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 💬 Support
 
-- Docker documentation
-- Docker Community
-- WSL 2 documentation
-- PowerShell documentation
+For support:
+1. Check the troubleshooting guide above
+2. Review [Docker's official documentation](https://docs.docker.com/)
+3. Create an issue in the repository
+4. Contact the maintainer
 
-## Support
+## ⚠️ Disclaimer
 
-For support, please create an issue in the repository or contact the maintainer.
-
-## Disclaimer
-
-These scripts are provided as-is, without any warranty. Always review scripts before running them on your system.
+These scripts are provided as-is, without warranty. Always review scripts before running them on your system.
